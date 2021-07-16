@@ -1,0 +1,3 @@
+recursive-include tkstyle *
+global-exclude *.py[cod]
+include VERSION
