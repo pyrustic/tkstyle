@@ -11,8 +11,7 @@
 </div>
 
 
-
-[Installation](#installation) | [Cyberpunk](https://github.com/pyrustic/cyberpunk-theme) | [Website](https://pyrustic.github.io)
+[Installation](#installation) | [Reference](https://github.com/pyrustic/tkstyle/tree/master/docs/reference#readme) | [Cyberpunk](https://github.com/pyrustic/cyberpunk-theme)
 
 ## Overview
 `TkStyle` is a styling library for `Tkinter` that takes advantage of the autocomplete feature of IDEs so that you hardly need any prior Tkinter styling knowledge.
@@ -343,10 +342,3 @@ To upgrade `TkStyle`:
 ```bash
 $ pip install tkstyle --upgrade --upgrade-strategy eager
 ```
-
-## Documentation
-I will write it later. This is a work in progress for early adopters.
-
-Bookmark this project so you don't miss any updates !
-
-You can visit my [website](https://pyrustic.github.io) to discover related cool projects !
