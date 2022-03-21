@@ -1,13 +1,12 @@
-# Modules Documentation - Overview
+# Modules Documentation
 
-**tkstyle.\_\_init\_\_**
+[tkstyle](https://github.com/pyrustic/tkstyle/blob/master/docs/modules/content/tkstyle/README.md#module-overview)
 <br>
 No description
-<br>
-[functions (3)](https://github.com/pyrustic/tkstyle/blob/master/docs/modules/content/tkstyle.__init__/functions.md) &nbsp;.&nbsp; [classes (21)](https://github.com/pyrustic/tkstyle/blob/master/docs/modules/content/tkstyle.__init__/classes.md)
 
-**tkstyle.\_\_main\_\_**
+
+[tkstyle.error](https://github.com/pyrustic/tkstyle/blob/master/docs/modules/content/tkstyle.error/README.md#module-overview)
 <br>
-No description
-<br>
-[functions (1)](https://github.com/pyrustic/tkstyle/blob/master/docs/modules/content/tkstyle.__main__/functions.md)
+Errors classes
+
+

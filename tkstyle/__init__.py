@@ -1,10 +1,11 @@
-import tkinter as tk
 import copy
+import tkinter as tk
+from tkstyle import error
 
 
 class Theme:
     """
-    A theme is a collection of styles and... others theme.
+    A theme is a collection of styles and... others themes.
     """
     def __init__(self):
         self._styles = dict()
@@ -21,25 +22,26 @@ class Theme:
         Add a style to this theme.
         The style is an instance of 'pyrustic.default_style._Style'.
         You don't have to directly subclass the private class '_Style'.
-        Instead, subclass one of the public classes in the module 'pyrustic.default_style'.
-        The scope here is an optional string.
-        When you don't set the scope, the style will be applied as it.
+        Instead, subclass one of the public classes that mirror a widget, example: tkstyle.Button.
+
+        The pattern here is an optional string.
+        When you don't set the pattern, the style will be applied as it.
         Example. If you add a Button style in your theme, this style will be
-        applied to all buttons widgets. But you can restrict this effect to a scope.
-        This scope could be by example "*Canvas*Button.", meaning all buttons
+        applied to all buttons widgets. But you can restrict this effect to a pattern.
+        This pattern could be by example "*Canvas*Button.", meaning all buttons
         that are living on all Canvas, are candidates for the given style.
         """
         if not pattern:
             pattern = "*{}".format(style.class_name)
         self._styles[pattern] = style
 
-    def target(self, root):
+    def apply(self, root):
         """
         Set this theme to master. Master here should be the root widget of your app.
         You need to set the theme to master before installing others widgets on the master.
         """
         if not isinstance(root, tk.Tk):
-            raise Error("The target of a theme should be the root Tk object")
+            raise error.Error("The theme should be applied the root Tk object")
         for pattern, style in self._styles.items():
             _populate_option_database(root, {pattern: style})
 
@@ -56,7 +58,7 @@ class _Style:
         Get the widget class
         """
         if self._CLASS_NAME is None:
-            raise Error("The class attribute _CLASS_NAME is missing in the _Style subclass")
+            raise error.Error("The class attribute _CLASS_NAME is missing in the _Style subclass")
         return self._CLASS_NAME
 
     @property
@@ -69,12 +71,12 @@ class _Style:
         """
         return copy.deepcopy(self)
 
-    def add(self, style, pattern=None):
+    def extend(self, style, pattern=None):
         if not pattern:
             pattern = "*{}".format(style.class_name)
         self._styles[pattern] = style
 
-    def target(self, widget, ignore_error=True):
+    def apply(self, widget, ignore_error=True):
         """
         Individually apply a style to a widget
         """
@@ -626,15 +628,6 @@ class Toplevel(_Style):
         self.relief = None  # "flat"
         self.takeFocus = None  # 0
         self.width = None  # 0
-
-
-class Error(Exception):
-    def __init__(self, *args, **kwargs):
-        self.message = args[0] if args else ""
-        super().__init__(self.message)
-
-    def __str__(self):
-        return self.message
 
 
 def _get_children(widget, cache=None):
